@@ -94,6 +94,10 @@ const validateSection = (req, res, next) => {
   }
 };
 
+app.get("/", (req, res) => {
+  res.send("dipenv running...");
+});
+
 // API Routes
 app.get(
   "/api/sections",
