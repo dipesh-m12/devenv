@@ -11,7 +11,7 @@ import { Plus, Save, Trash2, X, Wifi, WifiOff } from "lucide-react";
 import { toast } from "sonner";
 
 // Helper to convert links to clickable elements
-const LinkifyText = ({ text }) => {
+const LinkifyText = ({ text }: any) => {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
   const parts = text.split(urlRegex);
 
@@ -51,7 +51,7 @@ const App = () => {
 
   // Socket initialization with reconnection logic
   const initSocket = useCallback(() => {
-    const socketInstance = io("http://localhost:3000", {
+    const socketInstance = io("http://20.197.3.60:3000", {
       reconnection: true,
       reconnectionAttempts: 5,
       reconnectionDelay: 1000,
@@ -171,8 +171,8 @@ const App = () => {
     setSaving(true);
     try {
       const endpoint = selectedSection
-        ? `http://localhost:3000/api/sections/${selectedSection.id}`
-        : "http://localhost:3000/api/sections";
+        ? `http://20.197.3.60:3000/api/sections/${selectedSection.id}`
+        : "http://20.197.3.60:3000/api/sections";
       const method = selectedSection ? "PATCH" : "POST";
 
       const response = await fetch(endpoint, {
@@ -202,7 +202,7 @@ const App = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/sections/${selectedSection.id}`,
+        `http://20.197.3.60:3000/api/sections/${selectedSection.id}`,
         { method: "DELETE" }
       );
 

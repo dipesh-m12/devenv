@@ -18,13 +18,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import io from "socket.io-client";
 import { Feather } from "@expo/vector-icons";
 // LinkifyText component for clickable links
-const LinkifyText = ({ text }) => {
+const LinkifyText = ({ text }: any) => {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
   const parts = text.split(urlRegex);
 
   return (
     <Text>
-      {parts.map((part, i) => {
+      {parts.map((part: any, i: any) => {
         if (part.match(urlRegex)) {
           return (
             <Text
@@ -67,7 +67,7 @@ export default function index() {
   const [isEditing, setIsEditing] = useState(false);
   // Socket initialization
   const initSocket = useCallback(() => {
-    const socketInstance = io("http://192.168.0.102:3000", {
+    const socketInstance = io("http://20.197.3.60:3000", {
       reconnection: true,
       reconnectionAttempts: 5,
       reconnectionDelay: 1000,
@@ -168,8 +168,8 @@ export default function index() {
     setSaving(true);
     try {
       const endpoint = isNewNote
-        ? "http://192.168.0.102:3000/api/sections"
-        : `http://192.168.0.102:3000/api/sections/${selectedSection.id}`;
+        ? "http://20.197.3.60:3000/api/sections"
+        : `http://20.197.3.60:3000/api/sections/${selectedSection.id}`;
       const method = isNewNote ? "POST" : "PATCH";
 
       const response = await fetch(endpoint, {
@@ -200,7 +200,7 @@ export default function index() {
         onPress: async () => {
           try {
             const response = await fetch(
-              `http://192.168.0.102:3000/api/sections/${id}`,
+              `http://20.197.3.60:3000/api/sections/${id}`,
               { method: "DELETE" }
             );
 
@@ -245,12 +245,12 @@ export default function index() {
 
     setIsRefreshing(true);
     try {
-      const response = await fetch("http://192.168.0.102:3000/api/sections");
+      const response = await fetch("http://20.197.3.60:3000/api/sections");
       if (!response.ok) throw new Error("Failed to refresh");
       const data = await response.json();
       // Ensure unique items by filtering based on ID
       const uniqueData = Array.from(
-        new Map(data.map((item) => [item.id, item])).values()
+        new Map(data.map((item: any) => [item.id, item])).values()
       );
       setSections(uniqueData);
     } catch (error) {

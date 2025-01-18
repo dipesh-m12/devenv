@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mobile-app",
-    "slug": "mobile-app",
+    "name": "My Notes",
+    "slug": "dipesh-mobile-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -12,10 +12,14 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.dipesh.notesapp",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": ["INTERNET", "ACCESS_NETWORK_STATE", "ACCESS_WIFI_STATE"],
+      "buildType": "apk",
+      "usesCleartextTraffic": true
     },
     "web": {
       "bundler": "metro",
@@ -32,10 +36,31 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true,
+            "permissions": [
+              "INTERNET",
+              "ACCESS_NETWORK_STATE",
+              "ACCESS_WIFI_STATE"
+            ]
+          }
+        }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "93dd5d2f-c440-49ca-b40f-9b0be3870ef4"
+      }
     }
   }
 }
