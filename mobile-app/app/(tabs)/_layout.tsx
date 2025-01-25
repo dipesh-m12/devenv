@@ -4,6 +4,7 @@ import { Platform } from "react-native";
 // import {} from "";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Feather from "@expo/vector-icons/Feather";
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -31,13 +32,15 @@ export default function TabLayout() {
           ),
         }}
       />
-      {/* <Tabs.Screen
+      <Tabs.Screen
         name="explore"
         options={{
           title: "Explore",
-          // tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="travel-explore" size={24} color={color} />
+          ),
         }}
-      /> */}
+      />
     </Tabs>
   );
 }

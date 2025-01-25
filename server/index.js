@@ -8,6 +8,7 @@ import helmet from "helmet";
 import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
 import dotenv from "dotenv";
+import stationRouter from "./routes/stationRouter.js";
 
 dotenv.config();
 
@@ -93,6 +94,8 @@ const validateSection = (req, res, next) => {
     });
   }
 };
+
+app.use("/api/stations", stationRouter);
 
 app.get("/", (req, res) => {
   res.send("dipenv running...");
