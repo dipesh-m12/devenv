@@ -4,7 +4,7 @@ const stationRouter = express.Router();
 
 stationRouter.get("/nearest-station", async (req, res) => {
   const { latitude, longitude } = req.query;
-
+  console.log("now");
   try {
     const nearestStation = await Stations.findOne({
       location: {
